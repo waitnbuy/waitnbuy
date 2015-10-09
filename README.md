@@ -1,1 +1,1 @@
-# waitnbuy
+# Wait & Buy
