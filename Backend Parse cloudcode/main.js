@@ -5,10 +5,10 @@ Parse.Cloud.define("bSave", function(request, response) {
     query.equalTo("link", url);
     query.find({
         success: function(results) {
-            console.log('http://api.diffbot.com/v3/product?token=6ec693665e677a8dd630f0f261114fdf&url=' + url );
+            console.log('http://api.diffbot.com/v3/product?token=ab3a0c3a01500212c58e303946d068d8&url=' + url );
             Parse.Cloud.httpRequest({
                 method: "GET",
-                url: 'http://api.diffbot.com/v3/product?token=6ec693665e677a8dd630f0f261114fdf&url=' + url
+                url: 'http://api.diffbot.com/v3/product?token=ab3a0c3a01500212c58e303946d068d8&url=' + url
             }).then(function (httpResponse) {
                 var jsonResponse = JSON.parse(httpResponse.text);
                 results[0].set("description", jsonResponse.objects[0].title);
