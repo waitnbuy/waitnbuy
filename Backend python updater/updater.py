@@ -13,7 +13,7 @@ connection.request("GET", "/1/classes/Data", {}, {
 
 arr = json.loads(connection.getresponse().read())
 for obj in arr["results"]:
-    params = {'token': '6ec693665e677a8dd630f0f261114fdf', 'url' : obj['link']}
+    params = {'token': 'ab3a0c3a01500212c58e303946d068d8', 'url' : obj['link']}
     url = 'api.diffbot.com/v3/product?' 
     response = requests.get('http://api.diffbot.com/v3/product', params=params)
     new_arr = response.json()
