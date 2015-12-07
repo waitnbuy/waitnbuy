@@ -28,8 +28,11 @@
 		D3105C101BB96F9400141BD7 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3105C0F1BB96F9400141BD7 /* MenuController.swift */; settings = {ASSET_TAGS = (); }; };
 		D3105C121BB9743000141BD7 /* WaitingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3105C111BB9742F00141BD7 /* WaitingTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D3105C141BB9AE2300141BD7 /* WebPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3105C131BB9AE2300141BD7 /* WebPreviewViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D32A4A381BE7A0E0009CA09A /* SettingsTableViewCreditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A4A371BE7A0E0009CA09A /* SettingsTableViewCreditCell.swift */; settings = {ASSET_TAGS = (); }; };
+		D32A4A3A1BE7B484009CA09A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32A4A391BE7B484009CA09A /* StoreKit.framework */; };
 		D332CE041BB8041A00E51F0D /* WaitingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D332CE031BB8041A00E51F0D /* WaitingTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D3576A7A1BBBE10900F48144 /* Internet_Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3576A791BBBE10900F48144 /* Internet_Connection.swift */; settings = {ASSET_TAGS = (); }; };
+		D380F3371BEF89ED008F4B44 /* IAPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D380F3361BEF89ED008F4B44 /* IAPurchaseViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D3A519051BC1B33000CD080E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A519041BC1B33000CD080E /* SettingsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D3A5190B1BC3F7DF00CD080E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3A519071BC3F7DF00CD080E /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
 		D3A5190C1BC3F7DF00CD080E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3A519091BC3F7DF00CD080E /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
@@ -63,8 +66,11 @@
 		D3105C0F1BB96F9400141BD7 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		D3105C111BB9742F00141BD7 /* WaitingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingTableViewCell.swift; sourceTree = "<group>"; };
 		D3105C131BB9AE2300141BD7 /* WebPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPreviewViewController.swift; sourceTree = "<group>"; };
+		D32A4A371BE7A0E0009CA09A /* SettingsTableViewCreditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCreditCell.swift; sourceTree = "<group>"; };
+		D32A4A391BE7B484009CA09A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D332CE031BB8041A00E51F0D /* WaitingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingTableViewController.swift; sourceTree = "<group>"; };
 		D3576A791BBBE10900F48144 /* Internet_Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Internet_Connection.swift; sourceTree = "<group>"; };
+		D380F3361BEF89ED008F4B44 /* IAPurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPurchaseViewController.swift; sourceTree = "<group>"; };
 		D3A519041BC1B33000CD080E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		D3A519081BC3F7DF00CD080E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		D3A5190A1BC3F7DF00CD080E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
@@ -95,6 +101,7 @@
 				D3105BFD1BB83CE700141BD7 /* QuartzCore.framework in Frameworks */,
 				D3105BFB1BB83CDD00141BD7 /* CoreGraphics.framework in Frameworks */,
 				D3105BF91BB83CD600141BD7 /* CFNetwork.framework in Frameworks */,
+				D32A4A3A1BE7B484009CA09A /* StoreKit.framework in Frameworks */,
 				D3105BF71BB83CCD00141BD7 /* AudioToolbox.framework in Frameworks */,
 				D3105BF01BB8382800141BD7 /* Parse.framework in Frameworks */,
 				D3105BF11BB8382800141BD7 /* ParseCrashReporting.framework in Frameworks */,
@@ -126,6 +133,7 @@
 		D3105C0C1BB83D2F00141BD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D32A4A391BE7B484009CA09A /* StoreKit.framework */,
 				D3105BE71BB8382800141BD7 /* parse-library-1 */,
 				D3105C0A1BB83D2600141BD7 /* Social.framework */,
 				D3105C081BB83D2000141BD7 /* Accounts.framework */,
@@ -157,8 +165,10 @@
 				F491E7561A7F7EDA0026528E /* SWRevealViewController */,
 				F491E7591A7F7EF20026528E /* SWRevealViewController.m */,
 				F491E7571A7F7EF10026528E /* SidebarMenu-Bridging-Header.h */,
+				D380F3361BEF89ED008F4B44 /* IAPurchaseViewController.swift */,
 				F47029F51A7F27DB00E30A3C /* AppDelegate.swift */,
 				F47029F91A7F27DB00E30A3C /* Main.storyboard */,
+				D32A4A371BE7A0E0009CA09A /* SettingsTableViewCreditCell.swift */,
 				D3576A791BBBE10900F48144 /* Internet_Connection.swift */,
 				D3105C131BB9AE2300141BD7 /* WebPreviewViewController.swift */,
 				D3105C0D1BB84EF700141BD7 /* Login.swift */,
@@ -262,7 +272,7 @@
 						DevelopmentTeam = WXYPE6JK9P;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Maps.iOS = {
 								enabled = 0;
@@ -313,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F491E75A1A7F7EF20026528E /* SWRevealViewController.m in Sources */,
+				D32A4A381BE7A0E0009CA09A /* SettingsTableViewCreditCell.swift in Sources */,
 				D3105C101BB96F9400141BD7 /* MenuController.swift in Sources */,
 				D332CE041BB8041A00E51F0D /* WaitingTableViewController.swift in Sources */,
 				F47029F61A7F27DB00E30A3C /* AppDelegate.swift in Sources */,
@@ -320,6 +331,7 @@
 				D3105C0E1BB84EF800141BD7 /* Login.swift in Sources */,
 				D3A519051BC1B33000CD080E /* SettingsTableViewController.swift in Sources */,
 				D3C4ACF21BBAF8C100E140E9 /* HistoryTableViewController.swift in Sources */,
+				D380F3371BEF89ED008F4B44 /* IAPurchaseViewController.swift in Sources */,
 				D3105C141BB9AE2300141BD7 /* WebPreviewViewController.swift in Sources */,
 				D3105C121BB9743000141BD7 /* WaitingTableViewCell.swift in Sources */,
 			);

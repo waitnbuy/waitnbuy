@@ -8,10 +8,12 @@
 
 import UIKit
 import Parse
+import StoreKit
 
 
 class SettingsTableViewController: UITableViewController {
     
+    @IBOutlet weak var creditsCountCell: SettingsTableViewCreditCell!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,24 @@ class SettingsTableViewController: UITableViewController {
         
     }
     
+    
+    override func viewWillAppear(animated: Bool) {
+        if let user = PFUser.currentUser() {
+            user.fetchInBackgroundWithBlock({ (object: PFObject?, error: NSError?) -> Void in
+                if error == nil {
+                    if let a = user.objectForKey("credits") {
+                        self.creditsCountCell.creditCount.text = String(a.integerValue)
+                    }
+                    print(PFUser.currentUser()!.objectForKey("credits"))
+
+                }
+            })
+        }
+    }
+    
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //delete history (0 row)
         if (indexPath.row == 0) {
             let alert = UIAlertController(title: "Are you sure?", message: "This will delete all your history", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "Clear", style: .Destructive, handler: { (act: UIAlertAction) -> Void in
@@ -41,8 +60,19 @@ class SettingsTableViewController: UITableViewController {
                     }
                 })
             }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (act: UIAlertAction) -> Void in
+            }));
             self.presentViewController(alert, animated: true, completion: nil)
         }
+        
+        //add credits (row 2)
+        if (indexPath.row == 0) {
+            //IMPLEMENT BUYING
+            
+        }
+
+        
+        
     }
     
 }

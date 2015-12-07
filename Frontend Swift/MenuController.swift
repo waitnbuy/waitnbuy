@@ -40,58 +40,71 @@ class MenuController: UITableViewController {
             self.presentViewController(controller, animated: true, completion: nil)
         }
         if indexPath == NSIndexPath(forRow: 1, inSection: 0) {
-            let alert = UIAlertController(title: "Enter the URL", message: "Enter the URL of preferred item in your online shop", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addTextFieldWithConfigurationHandler{ (textfield :UITextField) -> Void in
-                textfield.placeholder = NSLocalizedString("http://...", comment: "URL")
-            }
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
-                if let tmp_new_url = alert.textFields![0].text {
-                    if tmp_new_url.characters.count != 0 {
-                        new_url = tmp_new_url
-                        print("Adding: \(new_url)")
-                        let query = PFQuery(className: "Data")
-                        query.whereKey("link", equalTo:new_url)
-                        query.findObjectsInBackgroundWithBlock() { (objects: [PFObject]?, error: NSError?) -> Void in
-                            if objects!.count != 0 {
-                                let alertInAlert = UIAlertController(title: "Oops", message: "You have already added this link to watching list", preferredStyle: UIAlertControllerStyle.Alert)
-                                alertInAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                                self.presentViewController(alertInAlert, animated: true, completion: nil)
-
-                            } else {
-                                let newObject = PFObject(className: "Data")
-                                newObject["link"] = new_url
-                                newObject.ACL = PFACL(user: PFUser.currentUser()!)
-                                newObject["owner"] = PFUser.currentUser()?.objectId
-                                newObject.saveInBackgroundWithBlock() { (success: Bool, error: NSError?) -> Void in
-                                    if (success) {
-                                        print("saved new link")
-                                        let alertInAlert = UIAlertController(title: "Success", message: "This link will appear in your tracking table soon", preferredStyle: UIAlertControllerStyle.Alert)
+            if let a = (PFUser.currentUser()!.objectForKey("credits")) {
+                if a.integerValue > 0 {
+                    let alert = UIAlertController(title: "Enter the URL", message: "Enter the URL of preferred item in your online shop", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addTextFieldWithConfigurationHandler{ (textfield :UITextField) -> Void in
+                        textfield.placeholder = NSLocalizedString("http://...", comment: "URL")
+                    }
+                    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
+                        if let tmp_new_url = alert.textFields![0].text {
+                            if tmp_new_url.characters.count != 0 {
+                                new_url = tmp_new_url
+                                print("Adding: \(new_url)")
+                                let query = PFQuery(className: "Data")
+                                query.whereKey("link", equalTo:new_url)
+                                query.findObjectsInBackgroundWithBlock() { (objects: [PFObject]?, error: NSError?) -> Void in
+                                    if objects!.count != 0 {
+                                        let alertInAlert = UIAlertController(title: "Oops", message: "You have already added this link to watching list", preferredStyle: UIAlertControllerStyle.Alert)
                                         alertInAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                                         self.presentViewController(alertInAlert, animated: true, completion: nil)
-                                        PFCloud.callFunctionInBackground("bSave", withParameters: ["link":new_url])
                                         
                                     } else {
-                                        print("error: \(error?.description)")
-                                        let alertInAlert = UIAlertController(title: "Unknown error", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-                                        alertInAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                                        self.presentViewController(alertInAlert, animated: true, completion: nil)
+                                        let newObject = PFObject(className: "Data")
+                                        newObject["link"] = new_url
+                                        newObject.ACL = PFACL(user: PFUser.currentUser()!)
+                                        newObject["owner"] = PFUser.currentUser()?.objectId
+                                        newObject.saveInBackgroundWithBlock() { (success: Bool, error: NSError?) -> Void in
+                                            if (success) {
+                                                print("saved new link")
+                                                let alertInAlert = UIAlertController(title: "Success", message: "This link will appear in your tracking table soon", preferredStyle: UIAlertControllerStyle.Alert)
+                                                alertInAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                                                self.presentViewController(alertInAlert, animated: true, completion: nil)
+                                                PFCloud.callFunctionInBackground("bSave", withParameters: ["link":new_url])
+                                                
+                                            } else {
+                                                print("error: \(error?.description)")
+                                                let alertInAlert = UIAlertController(title: "Unknown error", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                                                alertInAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                                                self.presentViewController(alertInAlert, animated: true, completion: nil)
+                                            }
+                                        }
                                     }
                                 }
+                                
+                                
+                            } else {
+                                self.presentViewController(alert, animated: true, completion: nil)
                             }
+                        } else {
+                            self.presentViewController(alert, animated: true, completion: nil)
                         }
-                        
-
-                    } else {
-                        self.presentViewController(alert, animated: true, completion: nil)
-                    }
-                } else {
+                        }
+                        ))
                     self.presentViewController(alert, animated: true, completion: nil)
-                }
+                    
+                } else {
+                    let alert = UIAlertController(title: "Out of Credits", message: "Go to settings to buy additional Credits", preferredStyle: UIAlertControllerStyle.Alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }} else {
+                let alert = UIAlertController(title: "Out of Credits", message: "Go to settings to buy additional Credits", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
             }
-            ))
-            self.presentViewController(alert, animated: true, completion: nil)
-            
         }
     }
 

@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "Wait \u0026 Buy": {
+      "applicationId": "8gjlvPcqeoOcMy6AHEEeAzwinCgFVfv7XWdzmUl6"
+    },
+    "_default": {
+      "link": "Wait \u0026 Buy"
+    }
+  }
+}

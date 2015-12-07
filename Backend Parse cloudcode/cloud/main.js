@@ -1,7 +1,22 @@
 
 Parse.Cloud.define("bSave", function(request, response) {
     var url = request.params.link;
-    var query = new Parse.Query("Data");
+    console.log(request.user.get("credits"));
+    Parse.Cloud.useMasterKey();
+    request.user.set("credits", parseInt(request.user.get("credits")) - 1);
+    request.user.save();
+   /* var query = new Parse.Query("User");
+    query.equalTo("objectId", usr);
+    query.find({
+        success: function(results) {
+            results[0].set("credits", parseInt(results[0].get("credits")) - 1);
+        },
+        error: function() {
+            response.error("error");
+        }
+    });
+    */
+    query = new Parse.Query("Data");
     query.equalTo("link", url);
     query.find({
         success: function(results) {
@@ -27,5 +42,5 @@ Parse.Cloud.define("bSave", function(request, response) {
         }
     });
     
-
+    
 });

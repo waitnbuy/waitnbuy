@@ -121,6 +121,8 @@ class WaitingTableViewController: UIViewController, UITableViewDataSource, UITab
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
             } else {
+                
+                        
                 self.presentViewController(alert, animated: true, completion: nil)
             }
             }
